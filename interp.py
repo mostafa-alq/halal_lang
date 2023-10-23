@@ -6,11 +6,11 @@
 # SUBO - Pops 2 numbers from the stack and subtracts the second from the first (this is here because i can)
 # PRINT - Prints out a string literal to the terminal
 # READ - Get a number as an input/output and pushes it into the stack
-# JUMP.E0 - Jump to label if the top of the stack is 0
-# JUMP.G0 - Jump to label if the top of the stack is greater than 0
-# JUMP.GE0 - Jump to label if the top of the stack is greater or equal to 0
-# JUMP.L0 - Jump to label if the top of the stack is less than 0
-# JUMP.LE0 - Jump to label if the top of the stack is less or equal to 0
+# JUMP.E0 - Jump to function if the top of the stack is 0
+# JUMP.G0 - Jump to function if the top of the stack is greater than 0
+# JUMP.GE0 - Jump to function if the top of the stack is greater or equal to 0
+# JUMP.L0 - Jump to function if the top of the stack is less than 0
+# JUMP.LE0 - Jump to function if the top of the stack is less or equal to 0
 # HALT - just stop lol
 # TOP - Return the value at the top of the stack
 
@@ -28,7 +28,7 @@ with open(program_filepath, 'r') as program_file:
 #Parse yo shit
 program = []
 token_counter = 0
-label_tracker = {}
+function_tracker = {}
 for line in program_lines:
   parts = line.split(" ")
   opcode = parts[0]
@@ -38,7 +38,7 @@ for line in program_lines:
     continue
   
   elif opcode.endswith(":"):
-    label_tracker[opcode[:-1]] = token_counter
+    function_tracker[opcode[:-1]] = token_counter
     continue
   
   #store the opcode
@@ -59,33 +59,28 @@ for line in program_lines:
     token_counter += 1
   
   elif opcode == "JUMP.E0":
-    #read the label
-    label = parts[1]
-    program.append(label)
+    function = parts[1]
+    program.append(function)
     token_counter += 1
     
   elif opcode == "JUMP.G0":
-    #read the label
-    label = parts[1]
-    program.append(label)
+    function = parts[1]
+    program.append(function)
     token_counter += 1
   
   elif opcode == "JUMP.GE0":
-    #read the label
-    label = parts[1]
-    program.append(label)
+    function = parts[1]
+    program.append(function)
     token_counter += 1
   
   elif opcode == "JUMP.L0":
-    #read the label
-    label = parts[1]
-    program.append(label)
+    function = parts[1]
+    program.append(function)
     token_counter += 1
   
   elif opcode == "JUMP.LE0":
-    #read the label
-    label = parts[1]
-    program.append(label)
+    function = parts[1]
+    program.append(function)
     token_counter += 1
 
 #Now interpret yo shit
@@ -158,7 +153,7 @@ while program[pc] != 'HALT':
   elif opcode == 'JUMP.E0':
     number = stack.top()
     if number == 0:
-      pc = label_tracker[program[pc]]
+      pc = function_tracker[program[pc]]
     else:
       pc += 1
       
@@ -166,7 +161,7 @@ while program[pc] != 'HALT':
   elif opcode == 'JUMP.G0':
     number = stack.top()
     if number > 0:
-      pc = label_tracker[program[pc]]
+      pc = function_tracker[program[pc]]
     else:
       pc += 1
   
@@ -174,7 +169,7 @@ while program[pc] != 'HALT':
   elif opcode == 'JUMP.GE0':
     number = stack.top()
     if number >= 0:
-      pc = label_tracker[program[pc]]
+      pc = function_tracker[program[pc]]
     else:
       pc += 1
   
@@ -182,7 +177,7 @@ while program[pc] != 'HALT':
   elif opcode == 'JUMP.L0':
     number = stack.top()
     if number < 0:
-      pc = label_tracker[program[pc]]
+      pc = function_tracker[program[pc]]
     else:
       pc += 1
   
@@ -190,7 +185,7 @@ while program[pc] != 'HALT':
   elif opcode == 'JUMP.LE0':
     number = stack.top()
     if number <= 0:
-      pc = label_tracker[program[pc]]
+      pc = function_tracker[program[pc]]
     else:
       pc += 1
       
