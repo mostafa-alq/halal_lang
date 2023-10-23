@@ -139,7 +139,7 @@ while program[pc] != 'HALT':
     stack.push(b-a)
 
   #thats the letter o not zero
-  #also this subtracts the other way around because why not
+  #also this subtracts the other way around because why not lol
   elif opcode == 'SUBO':
     a = stack.pop()
     b = stack.pop()
