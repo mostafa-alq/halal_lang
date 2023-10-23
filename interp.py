@@ -194,3 +194,4 @@ while program[pc] != 'HALT':
     else:
       pc += 1
       
+      
