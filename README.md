@@ -1,4 +1,6 @@
-With this new language and built in interpreter (also on my profile), you are able to utilise a stack-based language to execute code. Here is a list of the syntax:
+Utilising a stack-based design, I created a language which interprets python code and gives the user various functionality, including loops, easy sorting and arithmetic.
+
+Here is a list of the syntax:
 
 PUSH - Push a number into the top of stack (e.g PUSH 3)
 
