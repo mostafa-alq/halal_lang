@@ -1,10 +1,4 @@
-# THE OFFICIAL Halal Language
-
-While using my halal IDE, did you ever think to yourself "Hmm, maybe python isn't all that halal since they are predators? Wouldn't it be amazing if I could write in a language that is truly halal as well....".
-
-# LOOK NO FURTHER ! ! !
-
-With this new language and built in interpreter, you are able to utilise a halal stack-based language to execute code. Here is a list of the syntax:
+With this new language and built in interpreter (also on my profile), you are able to utilise a stack-based language to execute code. Here is a list of the syntax:
 
 PUSH - Push a number into the top of stack (e.g PUSH 3)
 
